@@ -13,7 +13,7 @@ def suma(n):
 def fibonacci(n):
     if n == 0 or n == 1:
         return 1
-    elif n == 1:
+    else:
         return fibonacci(n - 1) + fibonacci(n - 2)
 
 def contar_letra(palabra, letra):
@@ -23,6 +23,12 @@ def contar_letra(palabra, letra):
         return 1 + contar_letra(palabra[1:], letra)
     else:
         return contar_letra(palabra[1:], letra)
+
+def invertir_palabra(palabra):
+    if not palabra:
+        return palabra
+    else:
+        return invertir_palabra(palabra[1:]) + palabra[0]
 
 def potencia(base, exponente):
     if exponente == 0:
@@ -57,6 +63,9 @@ while opcion != "7":
                 letra = input("¿Qué letra desea contar?: ")
                 letra = letra[0].lower()
                 print(f"La letra: {letra} aparece {contar_letra(palabra, letra)} veces")
+            case "5":
+                palabra = input("Ingrese una palabra: ")
+                print(f"Palabra invertida: {invertir_palabra(palabra)}")
             case "6":
                 base = int(input("Ingresa la base: "))
                 exponente = int(input("Ingresa el exponente: "))
