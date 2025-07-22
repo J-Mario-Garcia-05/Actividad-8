@@ -11,7 +11,9 @@ def suma(n):
         return n + suma(n - 1)
 
 def fibonacci(n):
-    if n == 0 or n == 1:
+    if n == 0:
+        return 0
+    elif n == 1:
         return 1
     else:
         return fibonacci(n - 1) + fibonacci(n - 2)
@@ -19,7 +21,7 @@ def fibonacci(n):
 def contar_letra(palabra, letra):
     if palabra == "":
         return 0
-    if palabra[1] == letra:
+    if palabra[0] == letra:
         return 1 + contar_letra(palabra[1:], letra)
     else:
         return contar_letra(palabra[1:], letra)
@@ -50,18 +52,27 @@ while opcion != "7":
     try:
         match opcion:
             case "1":
-                n = int(input("Ingrese el número que desea calcular el factorial:"))
+                n = int(input("Ingrese el número que desea calcular el factorial: "))
+                if n < 0:
+                    print("Número no válido")
+                    continue
                 print(f"El factorial de {n} es {factorial(n)}")
             case "2":
                 n = int(input("Ingrese cuantos números desea sumar: "))
+                if n < 0:
+                    print("Número no válido")
+                    continue
                 print(suma(n))
             case "3":
                 n = int(input("Ingrese el n-ésimo número que quiere calcular del fibonacci: "))
+                if n < 0:
+                    print("Número no válido")
+                    continue
                 print(f"F{n} = {fibonacci(n)}")
             case "4":
                 palabra = input("Ingrese una palabra: ").lower()
-                letra = input("¿Qué letra desea contar?: ")
-                letra = letra[0].lower()
+                letra = input("¿Qué letra desea contar?: ").lower()
+                letra = letra[0]
                 print(f"La letra: {letra} aparece {contar_letra(palabra, letra)} veces")
             case "5":
                 palabra = input("Ingrese una palabra: ")
