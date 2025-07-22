@@ -4,27 +4,31 @@ def factorial(n):
     else:
         return n * factorial(n - 1)
 
-
 def suma(n):
     if n == 1:
         return 1
     else:
         return n + suma(n - 1)
 
-
 def fibonacci(n):
-    if n == 0:
+    if n == 0 or n == 1:
         return 1
     elif n == 1:
         return fibonacci(n - 1) + fibonacci(n - 2)
 
+def contar_letra(palabra, letra):
+    if palabra == "":
+        return 0
+    if palabra[1] == letra:
+        return 1 + contar_letra(palabra[1:], letra)
+    else:
+        return contar_letra(palabra[1:], letra)
 
 def potencia(base, exponente):
     if exponente == 0:
         return 1
     else:
         return base * potencia(base, exponente - 1)
-
 
 opcion = "0"
 while opcion != "7":
@@ -47,7 +51,12 @@ while opcion != "7":
                 print(suma(n))
             case "3":
                 n = int(input("Ingrese el n-ésimo número que quiere calcular del fibonacci: "))
-                print(fibonacci(n))
+                print(f"F{n} = {fibonacci(n)}")
+            case "4":
+                palabra = input("Ingrese una palabra: ").lower()
+                letra = input("¿Qué letra desea contar?: ")
+                letra = letra[0].lower()
+                print(f"La letra: {letra} aparece {contar_letra(palabra, letra)} veces")
             case "6":
                 base = int(input("Ingresa la base: "))
                 exponente = int(input("Ingresa el exponente: "))
